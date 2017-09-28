@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Styles -->
+    <link href="MDB/css/compiled.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+    position: relative;
+}
+.brand {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+}
+.ais-hits--item{
+  width:33%;
+}
+    </style>
+</head>
+<body>
+
+    <!--Main Navigation-->
+<header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark black" style="padding:20px 16px">
+        <div class="container text-center">
+            <a class="brand" style="margin:0px;align-items: center" href="#"><strong>Navbar</strong></a>
+            
+        </div>
+    </nav>
+
+</header>
+<!--Main Navigation-->
+
+<!--Main Layout-->
+<main class="text-center py-5 mt-3">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="pricefilter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Price Filter
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="pricefilter">
+                        <a class="dropdown-item" href="#">Low -> High</a>
+                        <a class="dropdown-item" href="#">High -> Low</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+
+                <mdb-navbar SideClass="navbar navbar-dark indigo">
+                    <form class="form-inline waves-light" mdbRippleRadius>
+                        <input class="form-control col-10" type="text" placeholder="Search" aria-label="Search" id="search-input">
+                        <button class="btn btn-outline-success btn-sm my-0 waves-light" type="submit" mdbRippleRadius>Search</button>
+                    </form>
+                </mdb-navbar>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        
+        
+    </div>
+    <div id="hits"></div>
+    <div id="pagination"></div>
+</main>
+<!--Main Layout-->
+                
+            
+    
+    <!-- Scripts -->
+
+    <script src="MDB/js/compiled.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+  <script type="text/html" id="hit-template">
+  
+                <!--Card Wider-->
+                <div class="card card-cascade wider">
+
+                    <!--Card image-->
+                    <div class="view overlay hm-white-slight">
+                        <img src="{{image}}" class="img-fluid" alt="{{name}}">
+                        <a href="#!">
+                            <div class="mask"></div>
+                        </a>
+                    </div>
+                    <!--/Card image-->
+
+                    <!--Card content-->
+                    <div class="card-body text-center">
+                        <!--Title-->
+                        <h4 class="card-title"><strong>{{name}}</strong></h4>
+                        <h5 class="indigo-text"><strong>{{resources}}</strong></h5>
+
+                        <p class="card-text">{{price}}</p>
+
+                        
+                        <!--Linkedin-->
+                        <a class="icons-sm li-ic"><i class="fa fa-linkedin"> </i></a>
+                        <!--Twitter-->
+                        <a class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a>
+                        <!--Dribbble-->
+                        <a class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a>
+
+                    </div>
+                    <!--/.Card content-->
+                </div>
+                <!--/.Card Wider-->
+            
+</script>
+  <script src="app.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDrIiQsBHNLu3ujDnro9DYmk6AM7MTmubI",
+    authDomain: "runfrommongo.firebaseapp.com",
+    databaseURL: "https://runfrommongo.firebaseio.com",
+    projectId: "runfrommongo",
+    storageBucket: "runfrommongo.appspot.com",
+    messagingSenderId: "889898104895"
+  };
+  firebase.initializeApp(config);
+</script>
+</body>
+</html>
